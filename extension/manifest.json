@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "My JSON Viewer",
+    "short_name": "My JW",
+    "description": "pretty printing json/p and collecting them all",
+    "version": "1.0",
+    "homepage_url": "https://github.com/uretgec/my-json-viewer",
+    "permissions": [
+        "storage",
+        "*://*/*",
+        "<all_urls>"
+    ],
+    "icons": { 
+        "16": "icons/16.png",   
+        "32": "icons/32.png",
+        "128": "icons/128.png" 
+    },
+    "author": "Uretgec",
+    "offline_enabled": true,
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["lib/jsonviewer.js","contentScript.js"],
+          "run_at": "document_start",
+          "all_frames": true
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        "pages/options.html"
+      ]
+  }
